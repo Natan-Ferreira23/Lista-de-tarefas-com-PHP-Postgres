@@ -35,9 +35,10 @@
               $stmt->execute();
               $retorno = $stmt->fetchAll(PDO::FETCH_ASSOC); 
             }else{
-               $sql= 'SELECT id, titulo, descricao, concluida, created_at FROM tarefas WHERE = :id';
+               $sql= 'SELECT id, titulo, descricao, concluida, created_at FROM tarefas WHERE ID = :id';
+              
                $stmt = $pdo->prepare($sql);       
-               $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+               $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                $stmt->execute();
                $retorno = $stmt->fetch(PDO::FETCH_ASSOC); 
             }        

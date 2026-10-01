@@ -6,11 +6,12 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Titulo</th>
-      <th scope="col">Descrição</th>
-      <th scope="col">Conluida</th>
-      <th scope="col">Data criação</th>
+      <th scope="col"class="bg-secondary">ID</th>
+      <th scope="col"class="bg-secondary text-center">Titulo</th>
+      <th scope="col"class="bg-secondary text-center">Descrição</th>
+      <th scope="col" class="bg-secondary">Concluida</th>
+      <th scope="col" class="bg-secondary ">Data criação</th>
+      <th scope="col" class="bg-secondary text-center">Ações</th>
     </tr>
   </thead>
   <tbody >
@@ -23,8 +24,20 @@
           <th scope="row"><?=$tarefa['id']?></th>
           <td><?=$tarefa['titulo']?></td>
           <td><?=substr($tarefa['descricao'],0,60)?></td>
-          <td><?php echo $tarefa['concluida'] == false ? "Não":"Sim";?></td>
-          <td><?=$tarefa['created_at']?></td>
+          <td><?= $tarefa['concluida'] == false ? "Não":"Sim"?></td>
+          <td><?=substr($tarefa['created_at'],0,10)?></td>          
+             <td class="text-center">
+                <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4"
+                  class="btn btn-success">
+                    <i class="bi bi-check"></i>
+                </a>               
+                 <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4"  class="btn btn-primary">
+                    <i class="bi bi-pencil-square"></i>
+                 </a>
+                <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4&id=<?=$tarefa['id']?>" class="btn btn-danger">
+                  <i class="bi bi-trash-fill"></i>
+                </a>                
+              </td>          
         </tr> 
       <?php  } ?>    
        

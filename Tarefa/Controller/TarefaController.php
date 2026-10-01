@@ -57,10 +57,18 @@ Class Tarefa {
         echo $retorno;
          $this->mostrarInfo($retorno,"3");
     }
-    public function ListarTarefa(string $id=""){
+    public function ListarTarefas(){
         $tarefa  = new TarefaDatabase();
-        $retorno = $tarefa->selectTarefa($id);  
+        $retorno = $tarefa->selectTarefa();     
         $this->mostrarInfo($retorno,"2");
+        
+        
+    }
+    
+    public function ListarTarefa(string $id){
+        $tarefa  = new TarefaDatabase();
+        $retorno = $tarefa->selectTarefa($id);             
+        $this->mostrarInfo($retorno,"4");        
     }
     public function mostrarInfo($dados, $rota){
         session_start();
