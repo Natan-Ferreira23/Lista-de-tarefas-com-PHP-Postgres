@@ -48,6 +48,20 @@
         }
         return $retorno;
     }
+    public function deleteTarefa(string $id){  
+        $pdo = $this->conecct();
+        try{
+            $sql= 'DELETE FROM tarefas WHERE ID = :id';
+            $stmt = $pdo->prepare($sql);       
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $retorno = "A tarefa com id " . $id ." foi deletada com sucesso !!";
+        }catch(PDOException $e){   
+            $retorno = "aconteceu um erro:" . $e->getMessage();            
+            //exit();
+        }
+        return $retorno;
+    }
 
     private function conecct(){
         try{

@@ -15,16 +15,23 @@
         $titulo = filter_input(INPUT_POST,'titulo',FILTER_DEFAULT);
         $descricao= filter_input(INPUT_POST,'descricao',FILTER_DEFAULT);
         $tarefa = new Tarefa();
-        $tarefa->CriarTarefa($titulo,$descricao);
-
+        $retorno = $tarefa->CriarTarefa($titulo,$descricao);
+        $tarefa->mostrarInfo($retorno,$rota);
     }elseif($rota == "2"){ //listar tarefa
         $tarefa = new Tarefa();
-        $retorno = $tarefa->ListarTarefas();        
-    }elseif($rota=="4"){ // exclusao
+        $retorno = $tarefa->ListarTarefas();    
+        $tarefa->mostrarInfo($retorno,$rota);
+
+    }elseif($rota=="4"){ // listar a tarefa 
         $id = filter_input(INPUT_GET,'id',FILTER_DEFAULT);  
         $tarefa = new Tarefa();
-        $retorno = $tarefa->ListarTarefa($id);       
+        $retorno = $tarefa->ListarTarefa($id);     
+        $tarefa->mostrarInfo($retorno,$rota);  
+    }elseif($rota=="5"){ // deletar a tarefa 
+        $id = filter_input(INPUT_GET,'id',FILTER_DEFAULT);         
+        $tarefa = new Tarefa();
+        $retorno = $tarefa->DeletarTarefa($id);     
+        $tarefa->mostrarInfo($retorno,"3");        
     }
-        
     
     

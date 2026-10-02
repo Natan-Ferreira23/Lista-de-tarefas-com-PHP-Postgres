@@ -54,21 +54,26 @@ Class Tarefa {
          }else{
             $retorno = "Titulo ou descricao vazio !!!";
          }            
-        echo $retorno;
-         $this->mostrarInfo($retorno,"3");
+        
+         //$this->mostrarInfo($retorno,"3");
+         return $retorno;
     }
     public function ListarTarefas(){
         $tarefa  = new TarefaDatabase();
         $retorno = $tarefa->selectTarefa();     
-        $this->mostrarInfo($retorno,"2");
-        
-        
+        //$this->mostrarInfo($retorno,"2");
+        return $retorno;        
     }
     
     public function ListarTarefa(string $id){
         $tarefa  = new TarefaDatabase();
         $retorno = $tarefa->selectTarefa($id);             
-        $this->mostrarInfo($retorno,"4");        
+        return $retorno;
+    }
+    public function DeletarTarefa(string $id){
+        $tarefa  = new TarefaDatabase();
+        $retorno = $tarefa->deleteTarefa($id);             
+        return $retorno;
     }
     public function mostrarInfo($dados, $rota){
         session_start();
