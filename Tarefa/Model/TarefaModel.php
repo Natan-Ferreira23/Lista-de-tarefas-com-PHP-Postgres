@@ -89,4 +89,19 @@
         }
         return $pdo;
     }
+
+    public function ConcluirTarefa(string $id){  
+        $pdo = $this->conecct();
+        try{
+            $sql= 'UPDATE tarefas SET concluida = TRUE WHERE ID = :id';
+            $stmt = $pdo->prepare($sql);       
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $retorno = "A tarefa com id " . $id ." foi concluida com sucesso !!";
+        }catch(PDOException $e){   
+            $retorno = "aconteceu um erro:" . $e->getMessage();            
+            //exit();
+        }
+        return $retorno;
+    }
 }

@@ -25,9 +25,10 @@
           <td><?=$tarefa['titulo']?></td>
           <td><?=substr($tarefa['descricao'],0,60)?></td>
           <td><?= $tarefa['concluida'] == false ? "Não":"Sim"?></td>
-          <td><?=substr($tarefa['created_at'],0,10)?></td>          
+          <td><?=substr($tarefa['created_at'],0,10)?></td>     
+          <?php if($tarefa['concluida'] == false){?>     
              <td class="text-center">
-                <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4"
+                <a href="./Tarefa/Routes/TarefaRoutes.php?rota=8&id=<?=$tarefa['id']?>"
                   class="btn btn-success">
                     <i class="bi bi-check"></i>
                 </a>               
@@ -37,7 +38,8 @@
                 <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4&id=<?=$tarefa['id']?>" class="btn btn-danger">
                   <i class="bi bi-trash-fill"></i>
                 </a>                
-              </td>          
+              </td>       
+          <?php }else{ echo "<td> </td>";}?>            
         </tr> 
       <?php  } ?>    
        

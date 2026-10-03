@@ -40,10 +40,18 @@
     }elseif($rota=="7"){ // salvar a tarefa editada
         $id = filter_input(INPUT_POST,'idHidden',FILTER_DEFAULT);  
         $titulo = filter_input(INPUT_POST,'titulo',FILTER_DEFAULT);
-        $descricao= filter_input(INPUT_POST,'descricao',FILTER_DEFAULT);
-        var_dump($id,$titulo,$descricao);
+        $descricao= filter_input(INPUT_POST,'descricao',FILTER_DEFAULT);       
         $tarefa = new Tarefa();
         $retorno = $tarefa->EditarTarefa($id,$titulo,$descricao);     
         $tarefa->mostrarInfo($retorno,"3");
+    }elseif($rota=="8"){ // visualizar a tarefa para concluir
+        $id = filter_input(INPUT_GET,'id',FILTER_DEFAULT);         
+        $tarefa = new Tarefa();
+        $retorno = $tarefa->ListarTarefa($id);     
+        $tarefa->mostrarInfo($retorno,"6");
+    }elseif($rota=="9"){// concluir a tarefa
+        $id = filter_input(INPUT_GET,'id',FILTER_DEFAULT);         
+        $tarefa = new Tarefa();
+        $retorno = $tarefa->ConcluirTarefa($id);     
+        $tarefa->mostrarInfo($retorno,"3");
     }
-    

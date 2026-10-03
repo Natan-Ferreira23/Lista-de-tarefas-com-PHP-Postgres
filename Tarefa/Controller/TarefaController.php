@@ -94,6 +94,17 @@ Class Tarefa {
         }            
         return $retorno;
     }
+
+    public function ConcluirTarefa(string $id){
+        if(Empty($id)){
+            $retorno = "ID vazio !!!";
+        }else{
+            $tarefa  = new TarefaDatabase();
+            $retorno = $tarefa->ConcluirTarefa($id);
+        }
+    
+        return $retorno;
+    }
 }
 
 /*
