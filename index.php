@@ -45,6 +45,8 @@
                         require_once './Tarefa/View/TarefaInfo.php';                                                    
                     }elseif($rota=='4'){
                         require_once './Tarefa/View/TarefaDeletar.php';                                                    
+                    }elseif($rota=='5'){
+                        require_once './Tarefa/View/TarefaEditar.php';                                                    
                     }
                     else{
                         require_once './Tarefa/View/TarefaNotFound.php';

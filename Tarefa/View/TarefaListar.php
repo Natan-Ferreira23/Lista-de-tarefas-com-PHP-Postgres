@@ -31,7 +31,7 @@
                   class="btn btn-success">
                     <i class="bi bi-check"></i>
                 </a>               
-                 <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4"  class="btn btn-primary">
+                 <a href="./Tarefa/Routes/TarefaRoutes.php?rota=6&id=<?=$tarefa['id']?>"  class="btn btn-primary">
                     <i class="bi bi-pencil-square"></i>
                  </a>
                 <a href="./Tarefa/Routes/TarefaRoutes.php?rota=4&id=<?=$tarefa['id']?>" class="btn btn-danger">
