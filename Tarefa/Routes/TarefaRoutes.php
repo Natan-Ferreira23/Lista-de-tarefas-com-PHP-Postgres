@@ -32,6 +32,18 @@
         $tarefa = new Tarefa();
         $retorno = $tarefa->DeletarTarefa($id);     
         $tarefa->mostrarInfo($retorno,"3");        
+    }elseif($rota=="6"){ // editar a tarefa 
+        $id = filter_input(INPUT_GET,'id',FILTER_DEFAULT);         
+        $tarefa = new Tarefa();
+        $retorno = $tarefa->ListarTarefa($id);     
+        $tarefa->mostrarInfo($retorno,"5");
+    }elseif($rota=="7"){ // salvar a tarefa editada
+        $id = filter_input(INPUT_POST,'idHidden',FILTER_DEFAULT);  
+        $titulo = filter_input(INPUT_POST,'titulo',FILTER_DEFAULT);
+        $descricao= filter_input(INPUT_POST,'descricao',FILTER_DEFAULT);
+        var_dump($id,$titulo,$descricao);
+        $tarefa = new Tarefa();
+        $retorno = $tarefa->EditarTarefa($id,$titulo,$descricao);     
+        $tarefa->mostrarInfo($retorno,"3");
     }
-    
     

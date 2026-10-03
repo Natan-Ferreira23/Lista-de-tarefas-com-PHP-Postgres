@@ -30,7 +30,7 @@
         $pdo = $this->conecct();
         try{
             if(empty($id)){
-              $sql= 'SELECT id, titulo, descricao, concluida, created_at FROM tarefas ';  
+              $sql= 'SELECT id, titulo, descricao, concluida, created_at FROM tarefas ORDER BY ID DESC';  
               $stmt = $pdo->prepare($sql);     
               $stmt->execute();
               $retorno = $stmt->fetchAll(PDO::FETCH_ASSOC); 
@@ -56,6 +56,22 @@
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             $retorno = "A tarefa com id " . $id ." foi deletada com sucesso !!";
+        }catch(PDOException $e){   
+            $retorno = "aconteceu um erro:" . $e->getMessage();            
+            //exit();
+        }
+        return $retorno;
+    }
+    public function updateTarefa(string $id,string $titulo,string $descricao){  
+        $pdo = $this->conecct();
+        try{
+            $sql= 'UPDATE tarefas SET titulo = :titulo, descricao = :descricao WHERE ID = :id';
+            $stmt = $pdo->prepare($sql);       
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->bindValue(':titulo', $titulo, PDO::PARAM_STR);
+            $stmt->bindValue(':descricao', $descricao, PDO::PARAM_STR);
+            $stmt->execute();
+            $retorno = "A tarefa com id " . $id ." foi atualizada com sucesso !!";
         }catch(PDOException $e){   
             $retorno = "aconteceu um erro:" . $e->getMessage();            
             //exit();

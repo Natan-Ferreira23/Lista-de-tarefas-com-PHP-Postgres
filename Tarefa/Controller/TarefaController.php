@@ -82,7 +82,18 @@ Class Tarefa {
         header('Location: ../../index.php');
         exit;
     }
-   
+   public function EditarTarefa(string $id, string $titulo, string $descricao){
+        
+        if(Empty($id)){
+            $retorno = "ID vazio !!!";
+        }elseif (!empty($titulo) && !empty($descricao)){
+            $tarefa  = new TarefaDatabase();
+            $retorno = $tarefa->updateTarefa($id,$titulo,$descricao);             
+        }else{
+            $retorno = "Titulo ou descricao vazio !!!";
+        }            
+        return $retorno;
+    }
 }
 
 /*
